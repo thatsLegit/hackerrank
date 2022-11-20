@@ -1,0 +1,9 @@
+**.dSYM
+**/.DS_Store
+bin/**
+**.i
+**.o
+**.s
+**.bc
+**.h.gch
+**.out
