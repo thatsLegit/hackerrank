@@ -8,7 +8,7 @@
  */
 
 function breakingRecords(scores) {
-  let min,
+  let min = 0,
     max = 0;
 
   return scores.reduce(
