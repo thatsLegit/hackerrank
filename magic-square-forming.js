@@ -111,7 +111,7 @@ function diff(a, b) {
  * The function is expected to return an INTEGER.
  * The function accepts 2D_INTEGER_ARRAY s as parameter.
  */
-function formingMagicSquare(s) {
+function formingMagicSquareWithCSP(s) {
   // flatting the array because why would I need a f*cking 2d array ?
   const initialAssignement = s.flat();
 
@@ -153,6 +153,42 @@ function drawRandomSquare() {
   console.log(array[0], array[1], array[2]);
   console.log(array[3], array[4], array[5]);
   console.log(array[6], array[7], array[8]);
+}
+
+// console.log(
+//   formingMagicSquareWithCSP([
+//     [4, 5, 8],
+//     [2, 4, 1],
+//     [1, 9, 7],
+//   ])
+// );
+
+// There actually are some maths tricks to solve this problem easier and with
+// an optimal solution: https://mindyourdecisions.com/blog/2015/11/08/how-many-3x3-magic-squares-are-there-sunday-puzzle/
+
+function formingMagicSquare(s) {
+  // knowing that there are only 8 possibilities to form magic squares in a 3x3 square
+  // we can just see which one is shorter to make
+  const magicSquares = [
+    [8, 1, 6, 3, 5, 7, 4, 9, 2],
+    [6, 1, 8, 7, 5, 3, 2, 9, 4],
+    [4, 9, 2, 3, 5, 7, 8, 1, 6],
+    [2, 9, 4, 7, 5, 3, 6, 1, 8],
+    [8, 3, 4, 1, 5, 9, 6, 7, 2],
+    [4, 3, 8, 9, 5, 1, 2, 7, 6],
+    [6, 7, 2, 1, 5, 9, 8, 3, 4],
+    [2, 7, 6, 9, 5, 1, 4, 3, 8],
+  ];
+
+  const assignement = s.flat();
+  let min = Infinity;
+
+  for (let element of magicSquares) {
+    const delta = diff(element, assignement);
+    if (delta < min) min = delta;
+  }
+
+  return min;
 }
 
 console.log(
