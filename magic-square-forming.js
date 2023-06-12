@@ -1,4 +1,6 @@
 // Typical Constraint Satisfaction Problem
+// source that allowed me to solve this problem: https://www.baeldung.com/cs/csp
+// https://www.baeldung.com/cs/backtracking-algorithms
 
 const CONSTANT = 15;
 const SQUARE_MAX_INDEX = 8;
