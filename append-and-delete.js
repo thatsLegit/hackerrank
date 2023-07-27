@@ -75,20 +75,18 @@ function appendAndDelete2(s, t, k) {
     return 'No';
   }
 
-  let availableMoves = k;
-
   for (let i = s.length; i >= 0; i--) {
     const ss = s.substring(0, i);
 
     if (t.match(ss)) {
-      if (t.length - ss.length <= availableMoves) return 'Yes';
+      if (t.length - ss.length <= k) return 'Yes';
       return 'No';
     }
 
-    availableMoves--;
+    k--;
   }
 
-  if (availableMoves >= t.length) return 'Yes';
+  if (k >= t.length) return 'Yes';
   return 'No';
 }
 
